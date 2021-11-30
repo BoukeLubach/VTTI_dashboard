@@ -6,6 +6,7 @@ import BaseLayout from "./containers/BaseLayout";
 import Home from "./pages/Home"
 import "./assets/baselayout.css"
 import MapPage from "./pages/MapPage";
+import TerminalDetail from "./pages/TerminalDetail";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/map/" element={<MapPage />} />
+              <Route path="/terminal/" element={<TerminalDetail/>} />
             </Routes>
 
           </BaseLayout>
