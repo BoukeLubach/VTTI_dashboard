@@ -48,7 +48,9 @@ INSTALLED_APPS = [
 
     #apps
     'plants',
-]
+    'energypurchase',
+    
+]   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

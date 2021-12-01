@@ -22,4 +22,5 @@ urlpatterns = [
     # path('users/', include('users.api.urls')),
     # path('auth/', obtain_auth_token),
     path('', include('plants.urls')),
+    path('', include('energypurchase.urls')),
 ]
