@@ -9,12 +9,14 @@ class Purchased_utility(models.Model):
     LITER = "Liter"
     MWh = "MWh"
     TJ = "TJ"
+    OTH = "Other"
 
     ENERGY_CARRIER_UNITS = (
         (NM3, "Nm3"),
         (LITER, "Liter"),
         (MWh, "MWh"),
         (TJ, "TJ"),
+        (OTH, "OTH")
     )
     
     name = models.CharField(max_length=124)
