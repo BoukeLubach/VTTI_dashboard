@@ -3,14 +3,14 @@ import { ActionTypes } from "../constants/action-types";
 export const setTerminals = (terminals) => {
   return {
     type: ActionTypes.SET_TERMINALS,
-    payload: products,
+    payload: terminals,
   };
 };
 
 export const selectedTerminal = (terminal) => {
   return {
     type: ActionTypes.SELECTED_TERMINAL,
-    payload: product,
+    payload: terminal,
   };
 };
 // export const removeSelectedProduct = () => {

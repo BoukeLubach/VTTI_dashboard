@@ -1,4 +1,4 @@
-import React from 'react'
+
 import React, { useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,12 +17,20 @@ function Home() {
             });
         dispatch(setTerminals(response.data));
     };
+    // const fetchTerminals = () => {
+    //     axios.get("http://localhost:8000/api/terminals/")
+    //         .then(dispatch(setTerminals(response.data)))
+    //         .catch((err) => {
+    //             console.log("Err: ", err);
+    //         })
+    // }
+
 
     useEffect(() => {
         fetchTerminals();
       }, []);
 
-      
+
     return (
         <div>
 
