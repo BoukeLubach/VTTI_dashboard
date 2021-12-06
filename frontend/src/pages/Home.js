@@ -15,7 +15,8 @@ function Home() {
             .catch((err) => {
                 console.log("Err: ", err);
             });
-        dispatch(setTerminals(response.data));
+        console.log(response.data.results)
+        dispatch(setTerminals(response.data.results));
     };
     // const fetchTerminals = () => {
     //     axios.get("http://localhost:8000/api/terminals/")
