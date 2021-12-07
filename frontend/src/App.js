@@ -26,7 +26,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/map/" element={<MapPage />} />
-              <Route path="/terminal/" element={<TerminalDetail/>} />
+              <Route path="/terminal/:terminalID" element={<TerminalDetail/>} />
+              <Route>404 Not Found!</Route>
             </Routes>
 
           </BaseLayout>
