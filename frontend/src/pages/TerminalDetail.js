@@ -1,12 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Divider, Breadcrumb } from 'antd';
 import Terminaldetailstable from '../components/Tables/Terminaldetailstable';
 import TerminalDetailMap from '../components/Maps/TerminalDetailMap';
 import { useParams } from "react-router-dom";
+import { selectedTerminal } from "../redux/actions/terminalsActions";
+import axios from "axios"
+import { useDispatch, useSelector } from "react-redux";
 
 function TerminalDetail() {
-    const [terminaldata, setTerminaldata] = useState([]);
+    // const [terminaldata, setTerminaldata] = useState([]);
     const { terminalID } = useParams();
+    const dispatch = useDispatch();
+
+
+    
+    const fetchEnergydata = async () => {
+        const response = await axios
+            .get("http://localhost:8000/api/terminals/" + terminalID + "/")
+            .catch((err) => {
+                console.log("Err: ", err);
+            });
+        console.log(response.data)
+        dispatch(selectedTerminal(response.data));
+    };
+
+
+
+
+    useEffect(() => {
+        fetchEnergydata()
+    }, []);
+
+    // const energyAPIdata = useSelector((state) => state.allTerminals.terminals);
+
     return (
         <div>
             <div className="row">
@@ -23,7 +49,7 @@ function TerminalDetail() {
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                <Terminaldetailstable />
+                {/* <Terminaldetailstable tabledata= {energyAPIdata} /> */}
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
