@@ -18,7 +18,7 @@ from .serializers import (
 )
 
 class TerminalFilter(django_filters.FilterSet):
-    terminal = django_filters.ModelChoiceFilter(field_name="terminal__slug", queryset=Terminal.objects.all())
+    terminal = django_filters.ModelChoiceFilter(field_name="terminal", queryset=Terminal.objects.all())
 
     class Meta:
         model = Purchased_utility
