@@ -13,6 +13,13 @@ export const selectedTerminal = (terminal) => {
     payload: terminal,
   };
 };
+
+export const selectedTerminalEnergy = (terminalenergy) => {
+  return {
+    type: ActionTypes.SELECTED_TERMINAL_ENERGY,
+    payload: terminalenergy,
+  };
+};
 // export const removeSelectedProduct = () => {
 //   return {
 //     type: ActionTypes.REMOVE_SELECTED_PRODUCT,

@@ -44,8 +44,8 @@ function HeaderInstance() {
           )}
         </SubMenu>
 
-        <Menu.Item key="9">Projects</Menu.Item>
-        <Menu.Item key="9"><Link to="/about">About</Link></Menu.Item>
+        <Menu.Item key="project">Projects</Menu.Item>
+        <Menu.Item key="about"><Link to="/about">About</Link></Menu.Item>
         {/* <Menu.Item key="terminals">Terminals</Menu.Item>
           <Menu.Item key="terminals">Terminals</Menu.Item>
           <Menu.Item key="terminals">Terminals</Menu.Item> */}

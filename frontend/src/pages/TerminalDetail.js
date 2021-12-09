@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Divider, Breadcrumb } from 'antd';
-import Terminaldetailstable from '../components/Tables/Terminaldetailstable';
+import EnergyTable from '../components/Tables/EnergyTable';
 import TerminalDetailMap from '../components/Maps/TerminalDetailMap';
 import { useParams } from "react-router-dom";
-import { selectedTerminal } from "../redux/actions/terminalsActions";
+import { selectedTerminal, selectedTerminalEnergy } from "../redux/actions/terminalsActions";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 
 function TerminalDetail() {
-    // const [terminaldata, setTerminaldata] = useState([]);
+    const [energydata, setenergydata] = useState([]);
     const { terminalID } = useParams();
     const dispatch = useDispatch();
 
@@ -16,12 +16,14 @@ function TerminalDetail() {
     
     const fetchEnergydata = async () => {
         const response = await axios
-            .get("http://localhost:8000/api/terminals/" + terminalID + "/")
+            .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
             .catch((err) => {
                 console.log("Err: ", err);
+
             });
-        console.log(response.data)
-        dispatch(selectedTerminal(response.data));
+        console.log(response.data.results)
+        setenergydata(response.data.results)
+        dispatch(selectedTerminalEnergy(response.data.results));
     };
 
 
@@ -49,7 +51,7 @@ function TerminalDetail() {
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                {/* <Terminaldetailstable tabledata= {energyAPIdata} /> */}
+                <EnergyTable tabledata= {energydata} />
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">

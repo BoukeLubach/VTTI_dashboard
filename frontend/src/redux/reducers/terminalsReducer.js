@@ -23,3 +23,15 @@ export const selectedTerminalReducer = (state = {}, { type, payload }) => {
       return state;
   }
 };
+
+
+
+export const selectedTerminalEnergyReducer = (state = {}, { type, payload }) => {
+  console.log(type);
+  switch (type) {
+    case ActionTypes.SELECTED_TERMINAL_ENERGY:
+      return { ...state, ...payload };
+    default:
+      return state;
+  }
+};
