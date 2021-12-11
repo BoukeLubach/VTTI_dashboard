@@ -78,9 +78,11 @@ function EnergyTable(props) {
 
 
     return (
-        <div>
+
+        <div className="col-md-10 offset-1">
             <Table dataSource={dataSource} columns={columns} />
         </div>
+
     )
 }
 

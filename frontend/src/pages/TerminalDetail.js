@@ -8,11 +8,24 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 
 function TerminalDetail() {
+    const [terminalData, setTerminalData] = useState([])
     const [energydata, setenergydata] = useState([]);
+
     const { terminalID } = useParams();
+
     const dispatch = useDispatch();
 
+    const fetchTerminalData = async () => {
+        const response = await axios
+            .get("http://localhost:8000/api/terminals/" + terminalID+ "/")
+            .catch((err) => {
+                console.log("Err: ", err);
 
+            });
+        console.log(response.data.results)
+        setTerminalData(response.data.results)
+        // dispatch(setTerminalData(response.data.results));
+    };
     
     const fetchEnergydata = async () => {
         const response = await axios
@@ -55,7 +68,7 @@ function TerminalDetail() {
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                <TerminalDetailMap />
+                <TerminalDetailMap center = {terminalData.lattitude, terminalData.longitude}/>
             </div>
             <div className="row d-flex justify-content-center">
 

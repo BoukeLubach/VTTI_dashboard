@@ -43,33 +43,38 @@ export default class TerminalDetailMap extends Component {
     };
 
     componentDidMount() {
+        // axios
+        //     .get("http://localhost:8000/api/terminals/")
+        //     .then((res) => {
+        //         // console.log(res.data.results)
+        //         var apidata = res.data.results
 
-        axios
-            .get("http://localhost:8000/api/terminals/")
-            .then((res) => {
-                // console.log(res.data.results)
-                var apidata = res.data.results
+        //         console.log(data)
 
-                console.log(data)
+        //         let latData = apidata.map(x => x.lattitude);
+        //         let lonData = apidata.map(x => x.longitude);
+        //         let textData = apidata.map(x => x.name);
 
-                let latData = apidata.map(x => x.lattitude);
-                let lonData = apidata.map(x => x.longitude);
-                let textData = apidata.map(x => x.name);
-
-                var data = this.state.data
-                data[0].lat = latData
-                data[0].lon = lonData
-                data[0].text = textData
-                console.log(data)
-                this.setState({ data: data, revision: this.state.revision + 1 })
-            });
+        //         var data = this.state.data
+        //         data[0].lat = latData
+        //         data[0].lon = lonData
+        //         data[0].text = textData
+        //         console.log(data)
+        //         this.setState({ data: data, revision: this.state.revision + 1 })
+        //     });
+        const terminalLattitude = this.props.center.lattitude
+        const terminalLongitude = this.props.center.longitude
+        var newLayout = this.state.layout
+        newLayout.mapbox.center = { lat: 52, lon: 10 }
+        this.setState({layout: newLayout})
+    
     }
 
 
     render() {
         return (
             <div className="row">
-                <div className="col-md-9" style={{ height: "75vh" }}>
+                <div className="col-md-12" style={{ height: "75vh" }}>
                     <Plot
                         revision={this.state.revision}
                         style={{ width: "100%", height: "100%" }}
