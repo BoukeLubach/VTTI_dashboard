@@ -40,10 +40,8 @@ const columns = [
 
 function EnergyTable(props) {
 
-
     var dataSource = []
     props.tabledata.map((item, index) => {
-
         dataSource.push({
             key: item.id,
             name: item.name,
@@ -51,29 +49,8 @@ function EnergyTable(props) {
             amount: item.amount,
             uom: item.uom,
             emission_factor: item.emission_factor,
-
         })
     })
-
-
-    console.log(dataSource)
-
-    // const dataSource = [
-    //     {
-    //         key: '1',
-    //         name: 'Mike',
-    //         age: 32,
-    //         address: '10 Downing Street',
-    //     },
-    //     {
-    //         key: '2',
-    //         name: 'John',
-    //         age: 42,
-    //         address: '10 Downing Street',
-    //     },
-    // ];
-
-
 
 
 

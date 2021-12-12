@@ -43,25 +43,7 @@ export default class TerminalDetailMap extends Component {
     };
 
     componentDidMount() {
-        // axios
-        //     .get("http://localhost:8000/api/terminals/")
-        //     .then((res) => {
-        //         // console.log(res.data.results)
-        //         var apidata = res.data.results
-
-        //         console.log(data)
-
-        //         let latData = apidata.map(x => x.lattitude);
-        //         let lonData = apidata.map(x => x.longitude);
-        //         let textData = apidata.map(x => x.name);
-
-        //         var data = this.state.data
-        //         data[0].lat = latData
-        //         data[0].lon = lonData
-        //         data[0].text = textData
-        //         console.log(data)
-        //         this.setState({ data: data, revision: this.state.revision + 1 })
-        //     });
+        
         const terminalLattitude = this.props.center.lattitude
         const terminalLongitude = this.props.center.longitude
         var newLayout = this.state.layout

@@ -13,7 +13,7 @@ function App() {
   const [token, setToken] = useState("");
 
   const userLogin = (tok) => {
-    console.log(tok);
+    // console.log(tok);
     setToken(tok);
   };
 

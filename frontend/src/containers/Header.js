@@ -20,7 +20,6 @@ function HeaderInstance() {
       .catch((err) => {
         console.log("Err: ", err);
       });
-    console.log(response.data.results)
     dispatch(setTerminals(response.data.results));
   };
   useEffect(() => {

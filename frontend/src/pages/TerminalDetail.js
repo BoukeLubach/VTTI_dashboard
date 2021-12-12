@@ -6,27 +6,24 @@ import { useParams } from "react-router-dom";
 import { selectedTerminal, selectedTerminalEnergy } from "../redux/actions/terminalsActions";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
+import TerminalDescription from '../components/Blocks/TerminalDescription';
+
 
 function TerminalDetail() {
     const [terminalData, setTerminalData] = useState([])
     const [energydata, setenergydata] = useState([]);
-
     const { terminalID } = useParams();
-
     const dispatch = useDispatch();
 
-    const fetchTerminalData = async () => {
+    const fetchTerminaldata = async () => {
         const response = await axios
-            .get("http://localhost:8000/api/terminals/" + terminalID+ "/")
+            .get("http://localhost:8000/api/terminals/" + terminalID + "/")
             .catch((err) => {
                 console.log("Err: ", err);
-
             });
-        console.log(response.data.results)
-        setTerminalData(response.data.results)
-        // dispatch(setTerminalData(response.data.results));
-    };
-    
+        setTerminalData(response.data)
+    }   
+
     const fetchEnergydata = async () => {
         const response = await axios
             .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
@@ -34,41 +31,33 @@ function TerminalDetail() {
                 console.log("Err: ", err);
 
             });
-        console.log(response.data.results)
+
         setenergydata(response.data.results)
-        dispatch(selectedTerminalEnergy(response.data.results));
+
+        // dispatch(selectedTerminalEnergy(response.data.results));
     };
 
 
 
 
     useEffect(() => {
+        fetchTerminaldata()
         fetchEnergydata()
     }, []);
 
-    // const energyAPIdata = useSelector((state) => state.allTerminals.terminals);
 
     return (
         <div>
-            <div className="row">
-                <div className="col-md-8 offset-2">
-                    <div className="row d-flex justify-content-center">
-                        <h1>Terminal - location</h1>
-                        <p>{terminalID}</p>
-                    </div>
-                    <div className="row">
-                        <p>Short description of the location</p>
-                    </div>
-
-                </div>
+            <div className="row d-flex justify-content-center">
+                <TerminalDescription terminal = {terminalData} />
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                <EnergyTable tabledata= {energydata} />
+                <EnergyTable tabledata={energydata} />
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                <TerminalDetailMap center = {terminalData.lattitude, terminalData.longitude}/>
+                {/* <TerminalDetailMap center = {terminalData.lattitude, terminalData.longitude}/> */}
             </div>
             <div className="row d-flex justify-content-center">
 

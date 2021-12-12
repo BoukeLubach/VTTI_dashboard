@@ -47,10 +47,9 @@ export default class terminalmap extends Component {
         axios
             .get("http://localhost:8000/api/terminals/")
             .then((res) => {
-                // console.log(res.data.results)
+
                 var apidata = res.data.results
 
-                console.log(data)
 
                 let latData = apidata.map(x => x.lattitude);
                 let lonData = apidata.map(x => x.longitude);
@@ -60,7 +59,6 @@ export default class terminalmap extends Component {
                 data[0].lat = latData
                 data[0].lon = lonData
                 data[0].text = textData
-                console.log(data)
                 this.setState({ data: data, revision: this.state.revision + 1 })
             });
     }
