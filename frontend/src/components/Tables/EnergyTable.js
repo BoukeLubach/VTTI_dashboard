@@ -9,16 +9,43 @@ const columns = [
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
+
+        filters: [
+            {
+                text: 'Diesel',
+                value: 'Diesel',
+            },
+            {
+                text: 'Electricity',
+                value: 'Electricity',
+            },
+            {
+                text: 'Gasoline',
+                value: 'gasoline',
+            },
+            {
+                text: 'Natural gas',
+                value: 'Natural Gas',
+            },
+        ],
+
+        onFilter: (value, record) => record.name.indexOf(value) === 0,
+        sorter: (a, b) => a.name.length - b.name.length,
+
     },
     {
         title: 'Year',
         dataIndex: 'year',
         key: 'year',
+        defaultSortOrder: 'ascend',
+        sorter: (a, b) => a.year - b.year,
     },
     {
         title: 'Amount',
         dataIndex: 'amount',
         key: 'amount',
+
+        sorter: (a, b) => a.amount - b.amount,
     },
     {
         title: 'Units',
