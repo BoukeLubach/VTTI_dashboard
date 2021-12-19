@@ -22,7 +22,11 @@ function TerminalDetail() {
                 console.log("Err: ", err);
             });
         setTerminalData(response.data)
+        dispatch(selectedTerminal(response.data))
     }   
+
+
+
 
     const fetchEnergydata = async () => {
         const response = await axios
@@ -34,7 +38,7 @@ function TerminalDetail() {
 
         setenergydata(response.data.results)
 
-        // dispatch(selectedTerminalEnergy(response.data.results));
+        dispatch(selectedTerminalEnergy(response.data.results));
     };
 
 
@@ -57,7 +61,7 @@ function TerminalDetail() {
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                {/* <TerminalDetailMap center = {terminalData.lattitude, terminalData.longitude}/> */}
+                <TerminalDetailMap />
             </div>
             <div className="row d-flex justify-content-center">
 

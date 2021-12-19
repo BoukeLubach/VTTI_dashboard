@@ -22,6 +22,7 @@ function HeaderInstance() {
       });
     dispatch(setTerminals(response.data.results));
   };
+  
   useEffect(() => {
     fetchTerminals();
   }, []);
