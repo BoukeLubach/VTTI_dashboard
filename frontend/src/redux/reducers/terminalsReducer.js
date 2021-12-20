@@ -13,7 +13,6 @@ export const terminalsReducer = (state = intialState, { type, payload }) => {
 };
 
 export const selectedTerminalReducer = (state = {}, { type, payload }) => {
-  console.log(type);
   switch (type) {
     case ActionTypes.SELECTED_TERMINAL:
       return { ...state, ...payload };
@@ -27,7 +26,6 @@ export const selectedTerminalReducer = (state = {}, { type, payload }) => {
 
 
 export const selectedTerminalEnergyReducer = (state = {}, { type, payload }) => {
-  console.log(type);
   switch (type) {
     case ActionTypes.SELECTED_TERMINAL_ENERGY:
       return { ...state, ...payload };

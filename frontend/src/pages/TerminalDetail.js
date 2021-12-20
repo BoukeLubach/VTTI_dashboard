@@ -6,23 +6,40 @@ import { useParams } from "react-router-dom";
 import { selectedTerminal, selectedTerminalEnergy } from "../redux/actions/terminalsActions";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
+import TerminalDescription from '../components/Blocks/TerminalDescription';
+
 
 function TerminalDetail() {
+    const [terminalData, setTerminalData] = useState([])
     const [energydata, setenergydata] = useState([]);
 
     const { terminalID } = useParams();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
-            .then((res) => {
-                console.log(res.data.results)
-                setenergydata(res.data.results)
-            })
+    const fetchTerminaldata = async () => {
+        const response = await axios
+            .get("http://localhost:8000/api/terminals/" + terminalID + "/")
             .catch((err) => {
                 console.log("Err: ", err);
             });
-    }, [terminalID]);
+        setTerminalData(response.data)
+        dispatch(selectedTerminal(response.data))
+    }   
+
+
+
+
+    const fetchEnergydata = async () => {
+        const response = await axios
+            .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
+            .catch((err) => {
+                console.log("Err: ", err);
+            });
+
+        setenergydata(response.data.results)
+
+        dispatch(selectedTerminalEnergy(response.data.results));
+    };
 
     // 
 
@@ -38,29 +55,16 @@ function TerminalDetail() {
     //     dispatch(selectedTerminalEnergy(response.data.results));
     // };
 
+    useEffect(() => {
+        fetchTerminaldata()
+        fetchEnergydata()
+    }, []);
 
-
-
-    // useEffect(() => {
-
-        // console.log("useeffect called")
-        // fetchEnergydata()
-    // }, []);
-    // const energyAPIdata = useSelector((state) => state.allTerminals.terminals);
 
     return (
         <div>
-            <div className="row">
-                <div className="col-md-8 offset-2">
-                    <div className="row d-flex justify-content-center">
-                        <h1>Terminal - location</h1>
-                        <p>{terminalID}</p>
-                    </div>
-                    <div className="row">
-                        <p>Short description of the location</p>
-                    </div>
-
-                </div>
+            <div className="row d-flex justify-content-center">
+                <TerminalDescription terminal = {terminalData} />
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">

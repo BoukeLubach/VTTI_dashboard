@@ -9,17 +9,6 @@ const { SubMenu } = Menu;
 
 function BaseLayout(props) {
   const { Content, Footer } = Layout;
-  // const [terminalList, setTerminalList] = useState([]);
-
-  // console.log(terminals)
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8000/api/terminals/")
-  //     .then((res) => {
-  //       // console.log(res.data.results)
-  //       setTerminalList(res.data.results)
-  //     });
-  // }, []);
 
 
 
