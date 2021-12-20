@@ -9,30 +9,43 @@ import { useDispatch, useSelector } from "react-redux";
 
 function TerminalDetail() {
     const [energydata, setenergydata] = useState([]);
+
     const { terminalID } = useParams();
     const dispatch = useDispatch();
 
-
-    
-    const fetchEnergydata = async () => {
-        const response = await axios
-            .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
+            .then((res) => {
+                console.log(res.data.results)
+                setenergydata(res.data.results)
+            })
             .catch((err) => {
                 console.log("Err: ", err);
-
             });
-        console.log(response.data.results)
-        setenergydata(response.data.results)
-        dispatch(selectedTerminalEnergy(response.data.results));
-    };
+    }, [terminalID]);
+
+    // 
+
+    // const fetchEnergydata = async () => {
+    //     const response = await axios
+    //         .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
+    //         .catch((err) => {
+    //             console.log("Err: ", err);
+
+    //         });
+    //     console.log(response.data.results)
+    //     setenergydata(response.data.results)
+    //     dispatch(selectedTerminalEnergy(response.data.results));
+    // };
 
 
 
 
-    useEffect(() => {
-        fetchEnergydata()
-    }, []);
+    // useEffect(() => {
 
+        // console.log("useeffect called")
+        // fetchEnergydata()
+    // }, []);
     // const energyAPIdata = useSelector((state) => state.allTerminals.terminals);
 
     return (
@@ -51,7 +64,7 @@ function TerminalDetail() {
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">
-                <EnergyTable tabledata= {energydata} />
+                <EnergyTable tabledata={energydata} />
             </div>
             <Divider />
             <div className="row d-flex justify-content-center">

@@ -47,10 +47,8 @@ export default class TerminalDetailMap extends Component {
         axios
             .get("http://localhost:8000/api/terminals/")
             .then((res) => {
-                // console.log(res.data.results)
                 var apidata = res.data.results
 
-                console.log(data)
 
                 let latData = apidata.map(x => x.lattitude);
                 let lonData = apidata.map(x => x.longitude);
@@ -60,7 +58,7 @@ export default class TerminalDetailMap extends Component {
                 data[0].lat = latData
                 data[0].lon = lonData
                 data[0].text = textData
-                console.log(data)
+                // console.log(data)
                 this.setState({ data: data, revision: this.state.revision + 1 })
             });
     }
@@ -69,7 +67,7 @@ export default class TerminalDetailMap extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-md-9" style={{ height: "75vh" }}>
+                <div className="col-md-12" style={{ height: "75vh" }}>
                     <Plot
                         revision={this.state.revision}
                         style={{ width: "100%", height: "100%" }}
