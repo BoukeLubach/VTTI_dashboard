@@ -1,6 +1,7 @@
 import React from 'react'
 import Terminalmap from "../components/Maps/Terminalmap"
 import { Breadcrumb } from 'antd';
+
 function MapPage() {
     return (
         <div className="col-md-12">

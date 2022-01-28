@@ -17,8 +17,13 @@ from .models import (
 
 
 class Purchased_utilitySerializer(serializers.ModelSerializer):
-   
 
+    def to_representation(self, instance):
+        rep = super(Purchased_utilitySerializer, self).to_representation(instance)
+        rep['terminalname'] = instance.terminal.name
+        return rep
+
+        
     class Meta:
         model = Purchased_utility
         fields = "__all__"

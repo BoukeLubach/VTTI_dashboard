@@ -7,7 +7,9 @@ import Home from "./pages/Home"
 import "./assets/baselayout.css"
 import MapPage from "./pages/MapPage";
 import TerminalDetail from "./pages/TerminalDetail";
-
+import EmissionPage from "./pages/EmissionPage";
+import TerminalList from "./pages/TerminalList"
+import SummaryPage from "./pages/SummaryPage"
 
 function App() {
   const [token, setToken] = useState("");
@@ -25,8 +27,11 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/map/" element={<MapPage />} />
+              <Route path="/map" element={<MapPage />} />
               <Route path="/terminal/:terminalID" element={<TerminalDetail/>} />
+              <Route path="/emissions" element={<EmissionPage/>} />
+              <Route path="/terminallist" element={<TerminalList/>} />
+              <Route path="/summary" element={<SummaryPage/>} />
               <Route>404 Not Found!</Route>
             </Routes>
 

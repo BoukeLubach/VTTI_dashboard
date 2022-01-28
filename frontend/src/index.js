@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import "antd/dist/antd.css";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-
+import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

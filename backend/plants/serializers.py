@@ -1,8 +1,9 @@
-from django.db.models import fields
 from rest_framework import serializers
+
 
 from .models import (
     Terminal,
+    TerminalEquipment
 )
 
 # class FilteredListSerializer(serializers.ListSerializer):
@@ -17,3 +18,13 @@ class TerminalSerializer(serializers.ModelSerializer):
         model = Terminal
         fields = "__all__"
 
+class TerminalEquipmentSerializer(serializers.ModelSerializer):
+
+    def to_representation(self, instance):
+        rep = super(TerminalEquipmentSerializer, self).to_representation(instance)
+        rep['terminalname'] = instance.terminal.name
+        return rep
+
+    class Meta:
+        model = TerminalEquipment
+        fields = "__all__"

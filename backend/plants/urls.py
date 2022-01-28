@@ -1,6 +1,7 @@
 from django.urls import path, include
 
 from .apiviews import (
+    TerminalEquipmentViewSet,
     TerminalViewSet, 
 
 )
@@ -10,7 +11,7 @@ app_name = 'plants'
 
 router = DefaultRouter()
 router.register('api/terminals', TerminalViewSet, basename='terminals')
-
+router.register("api/terminalequipment", TerminalEquipmentViewSet, basename='terminalequipment')
 
 urlpatterns =  [
 
