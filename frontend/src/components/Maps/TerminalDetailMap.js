@@ -45,12 +45,10 @@ function TerminalDetailMap() {
         }
     )
 
-    console.log(figure.figure)
-
 
     return (
-        <div className="row">
-            <div className="col-md-12" style={{ height: "75vh" }}>
+
+            <div className="col-md-10" style={{ height: "75vh" }}>
                 <Plot
                     revision={figure.revision}
                     style={{ width: "100%", height: "100%" }}
@@ -58,12 +56,12 @@ function TerminalDetailMap() {
                     layout={figure.layout}
                     config={figure.config}
                     frames={figure.frames}
-                    // onInitialized={(figure) => setFigure({figure})}
+                    onInitialized={(figure) => setFigure(figure)}
                     useResizeHandler={true}
-                    // onUpdate={(figure) => setFigure({figure})}
+                    onUpdate={(figure) => setFigure(figure)}
                 />
             </div>
-        </div>
+
     )
 }
 
