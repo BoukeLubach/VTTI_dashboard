@@ -12,6 +12,7 @@ import TerminalDescription from '../components/Blocks/TerminalDescription';
 function TerminalDetail() {
     const [terminalData, setTerminalData] = useState([])
     const [energydata, setenergydata] = useState([]);
+
     const { terminalID } = useParams();
     const dispatch = useDispatch();
 
@@ -33,7 +34,6 @@ function TerminalDetail() {
             .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
             .catch((err) => {
                 console.log("Err: ", err);
-
             });
 
         setenergydata(response.data.results)
@@ -41,8 +41,19 @@ function TerminalDetail() {
         dispatch(selectedTerminalEnergy(response.data.results));
     };
 
+    // 
 
+    // const fetchEnergydata = async () => {
+    //     const response = await axios
+    //         .get("http://localhost:8000/api/purchasedutilities/?terminal=" + terminalID)
+    //         .catch((err) => {
+    //             console.log("Err: ", err);
 
+    //         });
+    //     console.log(response.data.results)
+    //     setenergydata(response.data.results)
+    //     dispatch(selectedTerminalEnergy(response.data.results));
+    // };
 
     useEffect(() => {
         fetchTerminaldata()

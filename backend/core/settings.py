@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     #apps
     'plants',
     'energypurchase',
+    "projects",
     
 ]   
 
