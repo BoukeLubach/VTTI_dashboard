@@ -71,7 +71,7 @@ function TerminalDetail() {
                 <EnergyTable tabledata={energydata} />
             </div>
             <Divider />
-            <div className="row d-flex justify-content-center">
+            <div className="row justify-content-center">
                 <TerminalDetailMap />
             </div>
             <div className="row d-flex justify-content-center">
