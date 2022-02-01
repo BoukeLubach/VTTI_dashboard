@@ -46,10 +46,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'django_filters',
+    'knox',
+
     #apps
     'plants',
     'energypurchase',
     "projects",
+    "user",
     
 ]   
 
@@ -66,11 +69,7 @@ MIDDLEWARE = [
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 
 ROOT_URLCONF = 'core.urls'
