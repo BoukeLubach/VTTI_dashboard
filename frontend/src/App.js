@@ -10,7 +10,7 @@ import TerminalDetail from "./pages/TerminalDetail";
 import EmissionPage from "./pages/EmissionPage";
 import TerminalList from "./pages/TerminalList"
 import SummaryPage from "./pages/SummaryPage"
-
+import RoadmapItemDetail from "./pages/RoadmapItemDetail"
 function App() {
   const [token, setToken] = useState("");
 
@@ -32,6 +32,8 @@ function App() {
               <Route path="/emissions" element={<EmissionPage/>} />
               <Route path="/terminallist" element={<TerminalList/>} />
               <Route path="/summary" element={<SummaryPage/>} />
+              <Route path="/roadmap/:id" element={<RoadmapItemDetail/>} />
+              
               <Route>404 Not Found!</Route>
             </Routes>
 

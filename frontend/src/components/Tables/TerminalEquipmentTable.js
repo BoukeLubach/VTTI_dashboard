@@ -26,7 +26,7 @@ function TerminalEquipmentTable(props) {
             <Table.Body>
                 {props.terminalData.map((item, index) => (
                     <Table.Row key={index}>
-                        <Table.Cell>{item.terminalname}</Table.Cell>
+                        <Table.Cell > <a href={"/terminal/" + item.id}>{item.terminalname}</a></Table.Cell>
                         <Table.Cell textAlign='center'>{item.dieselGenerator ? <Icon color='green' name='checkmark' size='small' /> : ""}</Table.Cell>
                         <Table.Cell textAlign='center'>{item.fireFightEquipment ? <Icon color='green' name='checkmark' size='small' /> : ""}</Table.Cell>
                         <Table.Cell textAlign='center'>{item.processPumpsElectric ? <Icon color='green' name='checkmark' size='small' /> : ""}</Table.Cell>

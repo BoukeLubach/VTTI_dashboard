@@ -32,21 +32,19 @@ function HeaderInstance() {
   return (
     <Menu fixed='top' inverted>
       <Container>
-        <Menu.Item as='a' header>
-          VTTI ghg roadmap
-        </Menu.Item>
+
         <Menu.Item as='a' href="/">Home</Menu.Item>
-        <Menu.Item as='a'>VTTI global</Menu.Item>
-
-
+        <Menu.Item as='a' header href="/summary">
+          VTTI ghg roadmap
+        </Menu.Item >
         <Dropdown item simple text='Terminals'>
           <Dropdown.Menu>
             {terminals.map((terminal, index) =>
-              <Dropdown.Item key={terminal.id} href={"/terminal/"+ terminal.id}>{terminal.name}</Dropdown.Item>
+              <Dropdown.Item key={terminal.id} href={"/terminal/" + terminal.id}>{terminal.name}</Dropdown.Item>
             )}
           </Dropdown.Menu>
         </Dropdown>
-        <Menu.Item as='a'  href="/map">Map</Menu.Item>
+        <Menu.Item as='a' href="/map">Map</Menu.Item>
         <Menu.Item as='a' href="/terminallist">Terminal list</Menu.Item>
         <Menu.Item as='a' href="/projects">Projects</Menu.Item>
         <Menu.Item as='a' href="/emissions">Emissions</Menu.Item>

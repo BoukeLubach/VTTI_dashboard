@@ -1,0 +1,24 @@
+.roadmapitem-text-disabled{
+    color: #bec0c2
+}
+
+.roadmapitem-disabled{
+    opacity:0.5;
+}
+
+.header-block {
+    background-color: #006eb6;
+    
+}
+
+.roadmap-header{
+    color: white
+}
+
+.roadmap-header-link{
+    color:#006eb6;
+}
+
+.roadmap-header-link:hover{
+    color: #83a1b5;
+}
