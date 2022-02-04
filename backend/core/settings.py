@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     #packages
     'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'whitenoise.runserver_nostatic',
     'corsheaders',
     'crispy_forms',
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'plants',
     'energypurchase',
     "projects",
-    "user",
+    "accounts",
     
 ]   
 
@@ -69,8 +69,14 @@ MIDDLEWARE = [
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
+
+
 
 ROOT_URLCONF = 'core.urls'
 
@@ -123,8 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
+# https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -138,26 +145,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
-
-
-LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'login'
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'data') 
-
-
 
 STATICFILES_DIRS=[(
     os.path.join(BASE_DIR,'static')),
